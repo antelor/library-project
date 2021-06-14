@@ -16,13 +16,24 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
+function createBookDiv(book, i){
+    const bookDiv = document.createElement('div');
+    bookDiv.classList.add('book');
+    bookDiv.textContent = book.info();
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Borrar";
+    btn.addEventListener("click", () => {
+        bookDiv.remove();
+    })
+    bookDiv.appendChild(btn);
+
+    return bookDiv;
+}
+
 function showLibrary(){
     for (let i=0; i<myLibrary.length; i++){
-        const bookDiv = document.createElement('div');
-        bookDiv.classList.add('book');
-        bookDiv.textContent = myLibrary[i].info();
-        
-        bookListDiv.append(bookDiv);
+        bookListDiv.append( createBookDiv(myLibrary[i], i) );
     }
 }
 
@@ -51,11 +62,7 @@ function closeForm() {
     let newBook = new Book(dataArray[0], dataArray[1], dataArray[2], dataArray[3]);
     addBookToLibrary(dataArray);
 
-    const bookDiv = document.createElement('div');
-    bookDiv.classList.add('book');
-    bookDiv.textContent = newBook.info();
-    
-    bookListDiv.append(bookDiv);
+    bookListDiv.append( createBookDiv(newBook, myLibrary.length - 1) );
     
     document.querySelector('[class=form-popup').style.display = "none";
 }
@@ -63,7 +70,6 @@ function closeForm() {
 let myLibrary = [];
 const bookListDiv = document.querySelector('[class=bookList]');
 let testBook = new Book('Chistes de Gallegos', 'Pepe Mujica', '124', 'already read');
-console.log(testBook.info());
 
 addBookToLibrary('Chistes de Gallegos', 'Pepe Mujica', '124', 'already read');
 addBookToLibrary('Chistes de Gallegos 2', 'Pepe Mujica', '124', 'not read');
