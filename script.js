@@ -9,6 +9,18 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
+Book.prototype.toggleRead = function(bookDiv){
+    if(this.read=='already read') {
+        this.read = 'not read';
+        bookDiv.textContent = this.info();
+    }
+    else if(this.read=='not read'){
+        this.read = 'already read';
+        bookDiv.textContent = this.info();
+    }
+    createBookDivBtns(this, bookDiv);
+}
+
 function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read);
     newBook.info();
@@ -16,17 +28,30 @@ function addBookToLibrary(title, author, pages, read) {
     myLibrary.push(newBook);
 }
 
+function createBookDivBtns(book, bookDiv){
+    let delBtn = document.createElement("button");
+    delBtn.innerHTML = "Borrar";
+    delBtn.addEventListener("click", () => {
+        bookDiv.remove();
+    })
+    bookDiv.appendChild(delBtn);
+    
+    let readBtn = document.createElement("button");
+    readBtn.innerHTML = "Leido/No leido";
+    
+    readBtn.addEventListener("click", () => {
+        book.toggleRead(bookDiv);
+    })
+
+    bookDiv.appendChild(readBtn);
+}
+
 function createBookDiv(book, i){
     const bookDiv = document.createElement('div');
     bookDiv.classList.add('book');
     bookDiv.textContent = book.info();
-
-    let btn = document.createElement("button");
-    btn.innerHTML = "Borrar";
-    btn.addEventListener("click", () => {
-        bookDiv.remove();
-    })
-    bookDiv.appendChild(btn);
+    
+    createBookDivBtns(book, bookDiv);
 
     return bookDiv;
 }
@@ -53,8 +78,8 @@ function closeForm() {
 
     for (var i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
-            if(radios[i].value=='read')    dataArray.push('read');
-            if(radios[i].value=='not-read')dataArray.push('not-read');
+            if(radios[i].value=='read')    dataArray.push('already read');
+            if(radios[i].value=='not-read')dataArray.push('not read');
             break;
         }
     }
