@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>book</title>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"/>  
+</head>
+    <body>
+        <div class="bookList">
+        </div>
+
+        <button class="newBookBtn" onclick="openForm()">NEW BOOK</button>
+
+        <div class="form-popup">
+            <form class="bookForm">
+                <label for="name"><b>Nombre</b></label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="author"><b>Autor</b></label>
+                <input type="text" id="author" name="author" required>
+
+                <label for="pages"><b>Paginas</b></label>
+                <input type="text" id="pages" name="pages" required>
+
+                <input type="radio" id="read" name="read" value="read">
+                <label for="read">Leido</label><br>
+                <input type="radio" id="not-read" name="read" value="not-read">
+                <label for="not-read">No leido</label><br>              
+                
+                <button type="button" class="btn btnSend" onclick="closeForm()">Agregar</button>        
+            </form>
+        </div>
+            
+
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
