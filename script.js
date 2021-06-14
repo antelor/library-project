@@ -30,14 +30,17 @@ function addBookToLibrary(title, author, pages, read) {
 
 function createBookDivBtns(book, bookDiv){
     let delBtn = document.createElement("button");
-    delBtn.innerHTML = "Borrar";
+    delBtn.innerHTML = "Delete";
+    delBtn.classList.add('bookBtn');
     delBtn.addEventListener("click", () => {
         bookDiv.remove();
     })
     bookDiv.appendChild(delBtn);
     
     let readBtn = document.createElement("button");
-    readBtn.innerHTML = "Leido/No leido";
+    if(book.read == 'already read')    readBtn.innerHTML = "Not read";
+    if(book.read == 'not read')    readBtn.innerHTML = "Finished";
+    readBtn.classList.add('bookBtn');
     
     readBtn.addEventListener("click", () => {
         book.toggleRead(bookDiv);
@@ -48,7 +51,7 @@ function createBookDivBtns(book, bookDiv){
 
 function createBookDiv(book, i){
     const bookDiv = document.createElement('div');
-    bookDiv.classList.add('book');
+    bookDiv.classList.add('bookDiv');
     bookDiv.textContent = book.info();
     
     createBookDivBtns(book, bookDiv);

@@ -1,4 +1,57 @@
+:root{
+    box-sizing: border-box;
+}
+
+*,
+::before
+::after{
+    box-sizing: inherit;
+}
+
 .form-popup{
     display:none;
 }
 
+body{
+    background-color: lightblue;
+    font-size: 20px;
+}
+
+.bookList{
+    width:50%;
+    margin: 5em auto;
+    position: relative;
+    top:5em;
+    background-color: lightpink;
+    padding:1em;
+}
+
+.title{
+    width:100%;
+    margin:0;
+    padding:0;
+    background-color: blue;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    padding:1em;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+}
+
+.newBookBtn{
+    position: fixed;
+    bottom:30px;
+    right:30px;
+}
+
+.bookDiv{
+    background-color: white;
+    margin: 1em;
+    padding: 1em;
+}
+
+.bookBtn{
+    float:right;
+}
