@@ -17,19 +17,27 @@
 
         <div class="form-popup">
             <form class="bookForm">
-                <label for="name"><b>Nombre</b></label>
-                <input type="text" id="name" name="name" required>
+                <div>
+                    <label for="name"><b>Nombre</b></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div>
+                    <label for="author"><b>Autor</b></label>
+                    <input type="text" id="author" name="author" required>
+                </div>
 
-                <label for="author"><b>Autor</b></label>
-                <input type="text" id="author" name="author" required>
+                <div>
+                    <label for="pages"><b>Paginas</b></label>
+                    <input type="text" id="pages" name="pages" required>
+                </div>
 
-                <label for="pages"><b>Paginas</b></label>
-                <input type="text" id="pages" name="pages" required>
-
-                <input type="radio" id="read" name="read" value="read">
-                <label for="read">Leido</label><br>
-                <input type="radio" id="not-read" name="read" value="not-read">
-                <label for="not-read">No leido</label><br>              
+                <div>
+                    <input type="radio" id="read" name="read" value="read">
+                    <label for="read">Leido</label><br>
+                    <input type="radio" id="not-read" name="read" value="not-read" checked="checked">
+                    <label for="not-read">No leido</label><br>              
+                </div>
                 
                 <button type="button" class="btn btnSend" onclick="closeForm()">Agregar</button>        
             </form>

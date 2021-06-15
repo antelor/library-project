@@ -66,23 +66,37 @@ function showLibrary(){
 }
 
 function openForm() {
-    document.querySelector('[class=form-popup').style.display = "block";
+    document.querySelector('.form-popup').classList.add('form-popup-transition');
+    document.querySelector('.form-popup.form-popup-transition').classList.remove('form-popup');    
 }
 
 function closeForm() {
     let dataArray = Array.from(document.querySelectorAll('[class=bookForm] input'));
     dataArray = dataArray.map(input => input.value);
-
     //eliminar read not-read
     dataArray.pop();
     dataArray.pop();
+    
+    for(let i=0; i<dataArray.length; i++){
+        if(dataArray[i]=='') return;
+    }
 
-    var radios = document.getElementsByName('read');
+    document.querySelectorAll('[class=bookForm] input').forEach(function(x, y){
+        x.value='';
+    });
 
-    for (var i = 0, length = radios.length; i < length; i++) {
-        if (radios[i].checked) {
-            if(radios[i].value=='read')    dataArray.push('already read');
-            if(radios[i].value=='not-read')dataArray.push('not read');
+
+    let radios = document.getElementsByName('read');
+
+    for (let i = 0; i < radios.length; i++) {
+        if(radios[i].id=="read" && radios[i].checked){
+            console.log('a');
+            dataArray.push("already read");
+            break;
+        }
+        if(radios[i].id=="not-read" && radios[i].checked){
+            console.log('a');
+            dataArray.push("not read");
             break;
         }
     }
@@ -91,8 +105,9 @@ function closeForm() {
     addBookToLibrary(dataArray);
 
     bookListDiv.append( createBookDiv(newBook, myLibrary.length - 1) );
-    
-    document.querySelector('[class=form-popup').style.display = "none";
+
+    document.querySelector('.form-popup-transition').classList.add('form-popup');
+    document.querySelector('.form-popup-transition.form-popup').classList.remove('form-popup-transition');
 }
 
 let myLibrary = [];

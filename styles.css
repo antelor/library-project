@@ -8,8 +8,41 @@
     box-sizing: inherit;
 }
 
+.bookForm{
+    background-color: white;
+    width:33%;
+    height: auto;
+    position:absolute;
+    top: 25%;
+    left: 33%;
+    padding: 1em;
+    display: block;
+}
+
+.bookForm div{
+    padding-bottom: 1em;
+}
+
+.bookForm input[type='text']{
+    width: 100%;
+}
+
 .form-popup{
     display:none;
+}
+
+.form-popup-transition{
+    display:block;
+    animation: popup 0.5s;
+}
+
+@keyframes popup {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 body{
@@ -31,6 +64,7 @@ body{
     margin:0;
     padding:0;
     background-color: blue;
+    color:white;
     position: fixed;
     top: 0; 
     left: 0;
